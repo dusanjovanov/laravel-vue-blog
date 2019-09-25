@@ -1,5 +1,15 @@
 <template>
     <div>
-        <router-view></router-view>
+        <navbar />
+        <router-view />
+        <my-footer />
     </div>
 </template>
+<script>
+export default {
+    components: {
+        navbar: require('./components/Navbar').default,
+        'my-footer': require('./components/Footer').default
+    }
+}
+</script>
