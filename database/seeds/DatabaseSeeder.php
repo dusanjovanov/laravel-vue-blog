@@ -1,5 +1,6 @@
 <?php
 
+use App\Post;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -18,5 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'duca@duca.com',
             'password' => Hash::make('duca'),
         ]);
+
+        factory(Post::class, 10)->create();
     }
 }
