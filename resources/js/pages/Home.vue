@@ -1,12 +1,6 @@
 <template>
-  <!-- Page Content -->
-  <div class="container">
-
-    <div class="row justify-content-center">
-
-      <div class="col-md-8">
-
-        <h1 class="my-4">Page Heading
+  <div>
+     <h1 class="my-4">Page Heading
           <small>Secondary Text</small>
         </h1>
 
@@ -61,12 +55,5 @@
             <a class="page-link" href="#">Newer &rarr;</a>
           </li>
         </ul>
-
-      </div>
-
-    </div>
-    <!-- /.row -->
-
   </div>
-  <!-- /.container -->
 </template>

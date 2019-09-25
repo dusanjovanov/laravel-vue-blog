@@ -1,7 +1,13 @@
 <template>
     <div>
         <navbar />
-        <router-view />
+        <div class="container page-container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <router-view />
+                </div>
+            </div>
+        </div>
         <my-footer />
     </div>
 </template>

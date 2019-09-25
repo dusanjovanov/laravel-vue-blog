@@ -1,10 +1,5 @@
 <template>
-  <div class="container">
-
-    <div class="row justify-content-center">
-
-      <!-- Post Content Column -->
-      <div class="col-md-8">
+  <div>
 
         <!-- Title -->
         <h1 class="mt-4">Post Title</h1>
@@ -94,11 +89,5 @@
 
           </div>
         </div>
-
-      </div>
-
-    </div>
-    <!-- /.row -->
-
-  </div>
+</div>
 </template>
