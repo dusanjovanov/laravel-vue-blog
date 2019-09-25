@@ -63,6 +63,16 @@ class AuthController extends Controller
             "data" => $user
         ]);
     }
+
+    public function refresh(Request $request)
+    {
+        if ($token = $this->guard()->refresh()) {
+            return response()->json(["status" => "success"], 200)->header("Authorization", $token);
+        }
+
+        return response()->json(["error" => "refresh_token_error"], 401);
+    }
+
     private function guard()
     {
         return Auth::guard();
