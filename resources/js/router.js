@@ -21,6 +21,13 @@ const routes = [
         meta: {
             auth: undefined
         }
+    },
+    {
+        path: "/posts/:id",
+        component: require("./pages/Post").default,
+        meta: {
+            auth: undefined
+        }
     }
 ];
 
