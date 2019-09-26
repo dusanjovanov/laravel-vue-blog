@@ -17,4 +17,14 @@ class PostController extends Controller
         return ["posts" => Post::orderBy("created_at", "desc")->get()];
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return ["post" => Post::where("id", $id)->first()];
+    }
 }
