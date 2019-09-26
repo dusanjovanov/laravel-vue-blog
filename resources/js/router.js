@@ -3,31 +3,20 @@ import VueRouter from "vue-router";
 const routes = [
     {
         path: "/",
-        component: require("./pages/Home").default,
-        meta: {
-            auth: undefined
-        }
+        component: require("./pages/Home").default
     },
     {
         path: "/login",
-        component: require("./pages/Login").default,
-        meta: {
-            auth: undefined
-        }
+        component: require("./pages/Login").default
     },
     {
         path: "/register",
-        component: require("./pages/Register").default,
-        meta: {
-            auth: undefined
-        }
+        component: require("./pages/Register").default
     },
     {
         path: "/posts/:id",
-        component: require("./pages/Post").default,
-        meta: {
-            auth: undefined
-        }
+        component: require("./pages/Post").default
+    },
     }
 ];
 
