@@ -12,4 +12,6 @@ class Post extends Model
     {
         return $this->belongsTo("App\User");
     }
+
+    public $hidden = ["author_id"];
 }

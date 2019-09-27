@@ -17,6 +17,9 @@ const routes = [
         path: "/posts/:id",
         component: require("./pages/Post").default
     },
+    {
+        path: "/dashboard",
+        component: require("./pages/Dashboard").default
     }
 ];
 

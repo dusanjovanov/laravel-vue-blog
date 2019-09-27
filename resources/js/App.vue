@@ -3,7 +3,7 @@
     <navbar />
     <div class="container page-container">
       <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div :class="$route.path==='/dashboard' ? 'col-md-12' : 'col-md-8'">
           <router-view />
         </div>
       </div>
