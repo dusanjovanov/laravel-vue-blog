@@ -19,7 +19,8 @@ import {
     faQuoteLeft,
     faUndo,
     faRedo,
-    faSquare
+    faSquare,
+    faExternalLinkAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 require("./bootstrap");
@@ -47,7 +48,8 @@ library.add(
     faQuoteLeft,
     faUndo,
     faRedo,
-    faSquare
+    faSquare,
+    faExternalLinkAlt
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

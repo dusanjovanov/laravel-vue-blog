@@ -18,7 +18,10 @@
           <router-link to="/" active-class="active" exact class="nav-link">All Posts</router-link>
         </li>
         <li>
-          <router-link v-if="user" to="/dashboard" class="nav-link">Dashboard</router-link>
+          <a href="/dashboard" class="nav-link" target="_blank">
+            Dashboard
+            <font-awesome-icon icon="external-link-alt" />
+          </a>
         </li>
         <li class="ml-auto mr-2">
           <router-link v-if="!user" to="/register" class="btn btn-primary">Sign up</router-link>
