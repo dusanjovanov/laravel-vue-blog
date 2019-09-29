@@ -25,6 +25,7 @@
   </div>
 </template>
 <script>
+import { API_URL } from "../config";
 export default {
   data() {
     return {
@@ -36,11 +37,11 @@ export default {
   },
   methods: {
     getPosts() {
-      this.$http({
-        url: "posts",
-        method: "GET"
-      })
-        .then(res => (this.posts = res.data.posts))
+      fetch(`${API_URL}/posts`)
+        .then(res => res.json())
+        .then(data => {
+          this.posts = data.posts;
+        })
         .catch(err => console.log(err));
     }
   }

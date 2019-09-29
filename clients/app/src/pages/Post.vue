@@ -40,6 +40,7 @@ import {
   Underline,
   History
 } from "tiptap-extensions";
+import { API_URL } from "../config";
 export default {
   data() {
     return {
@@ -80,12 +81,10 @@ export default {
   },
   methods: {
     getPost() {
-      this.$http({
-        url: `posts/${this.$route.params.id}`,
-        method: "GET"
-      })
-        .then(res => {
-          this.post = res.data.post;
+      fetch(`${API_URL}/posts/${this.$route.params.id}`)
+        .then(res => res.json())
+        .then(data => {
+          this.post = data.post;
           this.editor.setContent(JSON.parse(this.post.body));
         })
         .catch(err => console.log(err));
