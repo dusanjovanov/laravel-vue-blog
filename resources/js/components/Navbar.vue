@@ -14,7 +14,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav w-100">
-        <li class="nav-item active">
+        <li class="nav-item">
           <router-link to="/" exact class="nav-link">All Posts</router-link>
         </li>
         <li>
