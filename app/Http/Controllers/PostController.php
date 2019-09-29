@@ -95,4 +95,17 @@ class PostController extends Controller
 
         $post->save();
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     *  @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request)
+    {
+        $request->validate(["post_ids" => "required|json"]);
+
+        Post::destroy(json_decode($request->post_ids));
+    }
 }
