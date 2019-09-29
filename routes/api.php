@@ -30,3 +30,8 @@ Route::prefix("auth")->group(function () {
 
 Route::get("posts", "PostController@index");
 Route::get("posts/{id}", "PostController@show");
+Route::group(["middleware" => "auth:api"], function () {
+    Route::post("posts", "PostController@store");
+    Route::put("posts/{id}", "PostController@update");
+    Route::delete("posts", "PostController@destroy");
+});
