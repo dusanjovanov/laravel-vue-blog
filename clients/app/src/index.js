@@ -8,6 +8,8 @@ Vue.use(VueRouter);
 
 new Vue({
     components: { app: require("./App.vue").default },
-    template: "<app></app>",
+    render(h) {
+        return h("app");
+    },
     router
-}).$mount("#app");
+}).$mount("#root");
