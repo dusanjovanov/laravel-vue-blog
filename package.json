@@ -22,8 +22,13 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.25",
+        "@fortawesome/free-solid-svg-icons": "^5.11.2",
+        "@fortawesome/vue-fontawesome": "^0.1.7",
         "@websanova/vue-auth": "^2.21.14-beta",
         "bootstrap": "^4.3.1",
+        "tiptap": "^1.26.0",
+        "tiptap-extensions": "^1.28.0",
         "vue": "^2.6.10",
         "vue-axios": "^2.1.4",
         "vue-router": "^3.1.3",

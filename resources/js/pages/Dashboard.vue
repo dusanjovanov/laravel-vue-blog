@@ -6,12 +6,11 @@
       class="position-sticky fixed-top bg-white w-100 p-2 border d-flex align-items-center"
       style="top:56px;"
     >
-      <button class="btn btn-success mr-1">✏️ Edit Post</button>
-      <button class="btn btn-primary mr-1">➕ Add Post</button>
-      <button class="btn btn-danger">🗑️ Delete Post</button>
+      <button @click="handleEdit" class="btn btn-success mr-1">✏️ Edit Post</button>
+      <router-link to="/dashboard/posts/add" class="btn btn-primary mr-1">➕ Add Post</router-link>
       <div class="ml-3">{{numSelected}} posts selected.</div>
     </div>
-    <table v-if="posts" class="table table-striped table-bordered">
+    <table v-if="posts" class="table table-striped table-bordered table-responsive">
       <thead>
         <th></th>
         <th>ID</th>
@@ -82,6 +81,15 @@ export default {
           1
         );
       }
+    },
+    handleEdit() {
+      if (this.selectedPosts.length === 0) {
+        return console.log("no posts selected");
+      }
+      this.$router.push({
+        path: `/dashboard/posts/edit/${this.selectedPosts[0]}`
+      });
+    },
     }
   }
 };

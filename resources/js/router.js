@@ -20,6 +20,10 @@ const routes = [
     {
         path: "/dashboard",
         component: require("./pages/Dashboard").default
+    },
+    {
+        path: "/dashboard/posts/:action(add|edit)/:id?",
+        component: require("./pages/EditPost").default
     }
 ];
 
