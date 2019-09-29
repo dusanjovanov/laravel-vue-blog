@@ -8,6 +8,7 @@
     >
       <button @click="handleEdit" class="btn btn-success mr-1">✏️ Edit Post</button>
       <router-link to="/dashboard/posts/add" class="btn btn-primary mr-1">➕ Add Post</router-link>
+      <button @click="handleDelete" class="btn btn-danger">🗑️ Delete Post</button>
       <div class="ml-3">{{numSelected}} posts selected.</div>
     </div>
     <table v-if="posts" class="table table-striped table-bordered table-responsive">
@@ -90,6 +91,19 @@ export default {
         path: `/dashboard/posts/edit/${this.selectedPosts[0]}`
       });
     },
+    handleDelete() {
+      if (this.selectedPosts.length === 0) {
+        return console.log("no posts selected");
+      }
+      this.$http
+        .delete("posts", {
+          data: { post_ids: JSON.stringify(this.selectedPosts) }
+        })
+        .then(() => {
+          this.getPosts();
+          this.selectedPosts = [];
+        })
+        .catch(err => console.log(err));
     }
   }
 };
