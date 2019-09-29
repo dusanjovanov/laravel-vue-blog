@@ -23,18 +23,6 @@
             <font-awesome-icon icon="external-link-alt" />
           </a>
         </li>
-        <li class="ml-auto mr-2">
-          <router-link v-if="!user" to="/register" class="btn btn-primary">Sign up</router-link>
-        </li>
-        <li>
-          <router-link v-if="!user" to="/login" class="btn btn-secondary">Log in</router-link>
-        </li>
-        <li v-if="user" class="d-flex align-items-center mr-2">
-          <span class="text-white">{{user.name}}</span>
-        </li>
-        <li>
-          <button v-if="user" class="btn btn-secondary">Log out</button>
-        </li>
       </ul>
     </div>
   </nav>
