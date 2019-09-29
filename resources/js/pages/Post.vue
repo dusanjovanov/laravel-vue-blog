@@ -7,66 +7,76 @@
     <hr />
     <img class="img-fluid rounded" :src="post.featured_image_url" :alt="post.title" />
     <hr />
-    <div>{{ post.body }}</div>
-    <hr />
-    <!-- Comments Form -->
-    <!-- <div class="card my-4">
-          <h5 class="card-header">Leave a Comment:</h5>
-          <div class="card-body">
-            <form>
-              <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
-    </div>-->
-
-    <!-- Single Comment -->
-    <!-- <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-          </div>
-    </div>-->
-
-    <!-- Comment with nested comments -->
-    <!-- <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-          </div>
-    </div>-->
+    <div>
+      <editor-content :editor="editor" />
+    </div>
   </div>
 </template>
+<style lang="scss" scoped>
+.ProseMirror {
+  &:focus {
+    outline: none;
+  }
+}
+</style>
 <script>
+import { Editor, EditorContent } from "tiptap";
+import {
+  Blockquote,
+  CodeBlock,
+  HardBreak,
+  Heading,
+  HorizontalRule,
+  OrderedList,
+  BulletList,
+  ListItem,
+  TodoItem,
+  TodoList,
+  Bold,
+  Code,
+  Italic,
+  Link,
+  Strike,
+  Underline,
+  History
+} from "tiptap-extensions";
 export default {
   data() {
     return {
-      post: null
+      post: null,
+      editor: new Editor({
+        extensions: [
+          new Blockquote(),
+          new BulletList(),
+          new CodeBlock(),
+          new HardBreak(),
+          new Heading({ levels: [1, 2, 3] }),
+          new HorizontalRule(),
+          new ListItem(),
+          new OrderedList(),
+          new TodoItem(),
+          new TodoList(),
+          new Link(),
+          new Bold(),
+          new Code(),
+          new Italic(),
+          new Strike(),
+          new Underline(),
+          new History()
+        ],
+        content: "",
+        editable: false
+      })
     };
+  },
+  components: {
+    EditorContent
   },
   mounted() {
     this.getPost();
+  },
+  beforeDestroy() {
+    this.editor.destroy();
   },
   methods: {
     getPost() {
@@ -74,7 +84,10 @@ export default {
         url: `posts/${this.$route.params.id}`,
         method: "GET"
       })
-        .then(res => (this.post = res.data.post))
+        .then(res => {
+          this.post = res.data.post;
+          this.editor.setContent(JSON.parse(this.post.body));
+        })
         .catch(err => console.log(err));
     }
   }
