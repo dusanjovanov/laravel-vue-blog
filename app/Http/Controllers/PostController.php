@@ -55,4 +55,44 @@ class PostController extends Controller
     {
         return ["post" => Post::where("id", $id)->first()];
     }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            "title" => "min:1",
+            "body" => "json",
+            "featured_image" => "image"
+        ]);
+
+        $post = Post::find($id);
+
+        if ($request->has('title')) {
+            $post->title = $request->title;
+        }
+        if ($request->has('body')) {
+            $post->body = $request->body;
+        }
+        if ($request->hasFile('featured_image')) {
+            $reqFileHash = sha1_file($request->file('featured_image'));
+            $postFileHash = sha1_file(storage_path('app/public/images/') . basename($post->featured_image_url));
+            $areImagesDifferent = $reqFileHash !== $postFileHash;
+
+            if ($areImagesDifferent) {
+                // store new image
+                $imagePath = Storage::disk('public')->putFile('images', $request->file("featured_image"));
+                // delete old one
+                Storage::disk('public')->delete('images/' . basename($post->featured_image_url));
+                // update image url
+                $post->featured_image_url = '/storage/' . $imagePath;
+            }
+        }
+
+        $post->save();
+    }
 }
