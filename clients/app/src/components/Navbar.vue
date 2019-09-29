@@ -20,7 +20,7 @@
         <li>
           <a href="/dashboard" class="nav-link" target="_blank">
             Dashboard
-            <font-awesome-icon icon="external-link-alt" />
+            <external-link-icon />
           </a>
         </li>
       </ul>
@@ -29,10 +29,8 @@
 </template>
 <script>
 export default {
-  computed: {
-    user() {
-      return this.$store.state.user;
-    }
+  components: {
+    "external-link-icon": require("./ExternalLink").default
   }
 };
 </script>
