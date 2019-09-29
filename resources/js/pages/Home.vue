@@ -6,8 +6,7 @@
       <img class="card-img-top" :src="post.featured_image_url" :alt="post.title" />
       <div class="card-body">
         <h2 class="card-title">{{post.title}}</h2>
-        <p class="card-text">{{post.body.substring(0, 150) + '...'}}</p>
-        <router-link :to="'/posts/' + post.id" class="btn btn-primary">Read More &rarr;</router-link>
+        <router-link :to="'/posts/' + post.id" class="btn btn-primary">Go to post &rarr;</router-link>
       </div>
       <div
         class="card-footer text-muted"
