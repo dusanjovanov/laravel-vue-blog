@@ -11,9 +11,3 @@ body {
 .page-container {
     min-height: calc(100vh - 56px);
 }
-
-.router-link-active.nav-link {
-    background-color: $white;
-    color: $black !important;
-    border-radius: 10px;
-}

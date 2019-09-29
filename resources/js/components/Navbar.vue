@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav w-100">
         <li class="nav-item">
-          <router-link to="/" exact class="nav-link">All Posts</router-link>
+          <router-link to="/" active-class="active" exact class="nav-link">All Posts</router-link>
         </li>
         <li>
           <router-link v-if="user" to="/dashboard" class="nav-link">Dashboard</router-link>
