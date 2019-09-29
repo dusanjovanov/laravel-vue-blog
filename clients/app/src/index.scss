@@ -1,0 +1,13 @@
+$theme-colors: (
+    "primary": rebeccapurple
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+    padding-top: 56px;
+}
+
+.page-container {
+    min-height: calc(100vh - 56px);
+}
