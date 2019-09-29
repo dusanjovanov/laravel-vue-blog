@@ -12,5 +12,19 @@
 */
 
 Route::get('/{any}', function () {
-    return view('welcome');
-})->where('any', '^(?!api).*$');
+    return view('app');
+})->where('any', '^(?!api|dashboard).*$');
+
+Route::get(
+    "/dashboard",
+    function () {
+        return view('dashboard');
+    }
+);
+
+Route::get(
+    "/dashboard/{any}",
+    function () {
+        return view('dashboard');
+    }
+)->where('any', '^.*$');
