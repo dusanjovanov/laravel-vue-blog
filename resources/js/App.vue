@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="userChecked">
     <navbar />
     <div class="container page-container">
       <div class="row justify-content-center">
@@ -13,12 +13,19 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      userChecked: false
+    };
+  },
   created() {
     this.$http({
       url: "auth/user"
     })
       .then(res => {
-        this.$store.dispatch("setUser", res.data.user);
+        this.$store
+          .dispatch("setUser", res.data.user)
+          .then(() => (this.userChecked = true));
       })
       .catch(err => console.log(err));
   },
