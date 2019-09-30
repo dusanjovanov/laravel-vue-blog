@@ -13,9 +13,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return ["posts" => Post::orderBy("created_at", "desc")->get()];
+        $limit = $request->query('limit');
+        return Post::orderBy("created_at", "desc")->paginate($limit);
     }
 
     /**
