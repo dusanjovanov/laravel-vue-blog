@@ -15,7 +15,8 @@ const config = {
         polyfill: "@babel/polyfill"
     },
     output: {
-        filename: "[name].bundle.js"
+        filename: "[name].bundle.js",
+        publicPath: "/"
     },
     devServer: {
         compress: true,
@@ -24,6 +25,7 @@ const config = {
         open: true,
         overlay: true,
         port: 3000,
+        publicPath: "/",
         stats: {
             normal: true
         }
