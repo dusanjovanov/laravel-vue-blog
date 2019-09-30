@@ -9,10 +9,11 @@
       aria-controls="navbarResponsive"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      @click="hasShowClass = !hasShowClass"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div :class="['collapse', 'navbar-collapse', {show: hasShowClass}]" id="navbarResponsive">
       <ul class="navbar-nav w-100">
         <li class="nav-item">
           <router-link to="/" active-class="active" exact class="nav-link">All Posts</router-link>
@@ -29,6 +30,11 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      hasShowClass: false
+    };
+  },
   components: {
     "external-link-icon": require("./ExternalLink").default
   }
