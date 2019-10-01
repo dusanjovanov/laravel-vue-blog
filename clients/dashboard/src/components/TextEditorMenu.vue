@@ -1,6 +1,6 @@
 <template>
   <editor-menu-bar :editor="editor" v-slot="{commands, isActive}">
-    <div>
+    <div class="card flex-row flex-wrap pt-2 pr-2 mb-2 root">
       <button
         type="button"
         class="menubar__button"
@@ -139,14 +139,20 @@
   </editor-menu-bar>
 </template>
 <style lang="scss" scoped>
+.root {
+  background-color: #d6d6d6;
+  border-color: #8e8e8e;
+}
 .menubar__button {
-  border: 1px solid #ccc;
+  border: 1px solid #9a9a9a;
+  background-color: #fff;
   border-radius: 5px;
   padding: 5px;
   min-width: 36px;
-  margin-bottom: 6px;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
   &.is-active {
-    background-color: rebeccapurple !important;
+    background-color: var(--blue) !important;
     color: #fff;
   }
   &:hover {

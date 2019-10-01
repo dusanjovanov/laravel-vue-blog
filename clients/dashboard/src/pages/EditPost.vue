@@ -1,6 +1,6 @@
 <template>
   <div class="mb-5">
-    <h1 class="my-4">{{this.pageType === "add" ? "Add Post" : "Edit Post"}}</h1>
+    <h1 class="h4 mb-4">{{pageType === "add" ? 'Add Post' : 'Edit Post'}}</h1>
     <form @submit.prevent="handleSubmit">
       <div class="form-group">
         <label for="title">Title</label>
@@ -37,7 +37,7 @@
       <div class="form-group">
         <label for="body">Body</label>
         <text-editor-menu :editor="editor" />
-        <div :class="['editor','form-control',{'editor-focused': isEditorFocused}]" ref="editor">
+        <div :class="['editor',{'editor-focused': isEditorFocused}]" ref="editor">
           <editor-content :editor="editor" />
         </div>
       </div>
@@ -51,8 +51,18 @@
 </template>
 <style lang="scss">
 .editor {
-  height: 300px;
+  height: 300px !important;
+  font-size: 1rem;
+  font-weight: 400;
   overflow-y: scroll;
+  border: 1px solid #d1d3e2;
+  border-radius: 0.35em;
+  line-height: 1.5;
+  color: #6e707e;
+  padding: 0.375rem 0.75rem;
+  background-color: #fff;
+  background-clip: padding-box;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   .ProseMirror {
     min-height: 300px;
     &:focus {
@@ -61,11 +71,10 @@
   }
 }
 .editor-focused {
-  color: #495057;
   background-color: #fff;
-  border-color: #a679d2;
+  border-color: #8080ff;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(102, 51, 153, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 255, 0.25);
 }
 </style>
 <script>
@@ -90,6 +99,7 @@ import {
   History
 } from "tiptap-extensions";
 import TextEditorMenu from "../components/TextEditorMenu";
+import { API_URL } from "../../../config";
 export default {
   data() {
     return {
@@ -144,18 +154,21 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.state.user;
+      return {
+        name: "DULE"
+      };
+      // return this.$store.state.user;
     }
   },
   methods: {
     getPost() {
-      this.$http
-        .get(`posts/${this.$route.params.id}`)
-        .then(res => {
-          if (res.data.post === null) {
-            this.$router.push({ path: "/dashboard" });
+      fetch(`${API_URL}/posts/${this.$route.params.id}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.data.post === null) {
+            this.$router.push({ path: "/" });
           } else {
-            this.post = res.data.post;
+            this.post = data.data.post;
             this.title = this.post.title;
             this.editor.setContent(JSON.parse(this.post.body));
           }

@@ -2,7 +2,7 @@
   <div>
     <div class="position-sticky fixed-top bg-white w-100 p-2 border d-flex align-items-center">
       <button @click="handleEdit" class="btn btn-success mr-1">✏️ Edit Post</button>
-      <router-link to="/dashboard/posts/add" class="btn btn-primary mr-1">➕ Add Post</router-link>
+      <router-link to="/posts/add" class="btn btn-primary mr-1">➕ Add Post</router-link>
       <button @click="handleDelete" class="btn btn-danger">🗑️ Delete Post</button>
       <div class="ml-3">{{numSelected}} posts selected.</div>
     </div>

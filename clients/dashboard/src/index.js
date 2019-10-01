@@ -4,16 +4,48 @@ import {
     faChevronLeft,
     faChevronRight,
     faPlus,
-    faTable
+    faTable,
+    faCode,
+    faBold,
+    faItalic,
+    faUnderline,
+    faStrikethrough,
+    faHeading,
+    faParagraph,
+    faListUl,
+    faListOl,
+    faQuoteLeft,
+    faSquare,
+    faUndo,
+    faRedo
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Vue from "vue";
 import VueRouter from "vue-router";
 import router from "./router";
-// import "./index.scss";
+import "./index.scss";
 import "./theme/sb-admin-2.scss";
 
-library.add(faChevronLeft, faChevronRight, faChevronDown, faPlus, faTable);
+library.add(
+    faChevronLeft,
+    faChevronRight,
+    faChevronDown,
+    faPlus,
+    faTable,
+    faCode,
+    faBold,
+    faItalic,
+    faUnderline,
+    faStrikethrough,
+    faHeading,
+    faParagraph,
+    faListUl,
+    faListOl,
+    faQuoteLeft,
+    faSquare,
+    faUndo,
+    faRedo
+);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.config.prouctionTip = false;
 
