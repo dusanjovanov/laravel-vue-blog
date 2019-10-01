@@ -173,21 +173,21 @@
           display: inline;
         }
         // Accordion Arrow Icon
-        &[data-toggle="collapse"] {
-          &::after {
-            width: 1rem;
-            text-align: center;
-            float: right;
-            vertical-align: 0;
-            border: 0;
-            font-weight: 900;
-            content: '\f107';
-            font-family: 'Font Awesome 5 Free';
-          }
-          &.collapsed::after {
-            content: '\f105';
-          }
-        }
+        // &[data-toggle="collapse"] {
+        //   &::after {
+        //     width: 1rem;
+        //     text-align: center;
+        //     float: right;
+        //     vertical-align: 0;
+        //     border: 0;
+        //     font-weight: 900;
+        //     content: '\f107';
+        //     font-family: 'Font Awesome 5 Free';
+        //   }
+        //   &.collapsed::after {
+        //     content: '\f105';
+        //   }
+        // }
       }
     }
     .sidebar-brand {
