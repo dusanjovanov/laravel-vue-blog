@@ -1,7 +1,8 @@
 {
     "private": true,
     "scripts": {
-        "dev:app": "webpack-dev-server --env.development --env.app=app"
+        "dev:app": "webpack-dev-server --env.development --env.app=app",
+        "dev:dashboard": "webpack-dev-server --env.development --env.app=dashboard"
     },
     "devDependencies": {
         "@babel/core": "^7.6.2",
