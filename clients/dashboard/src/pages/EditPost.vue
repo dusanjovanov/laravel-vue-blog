@@ -165,10 +165,10 @@ export default {
       fetch(`${API_URL}/posts/${this.$route.params.id}`)
         .then(res => res.json())
         .then(data => {
-          if (data.data.post === null) {
+          if (data.post === null) {
             this.$router.push({ path: "/" });
           } else {
-            this.post = data.data.post;
+            this.post = data.post;
             this.title = this.post.title;
             this.editor.setContent(JSON.parse(this.post.body));
           }
@@ -189,11 +189,8 @@ export default {
         formData.set("featured_image", this.imageFile);
         formData.set("author_id", this.user.id);
 
-        this.$http
-          .post("posts", formData)
-          .then(res => {
-            this.$router.push({ path: "/dashboard" });
-          })
+        fetch(`${API_URL}/posts`, { method: "post", body: formData })
+          .then(() => this.$router.push({ path: "/posts" }))
           .catch(err => console.log(err));
       } else {
         const formData = new FormData();
@@ -204,11 +201,11 @@ export default {
           formData.set("featured_image", this.imageFile);
         }
 
-        this.$http
-          .post(`posts/${this.post.id}`, formData)
-          .then(res => {
-            this.$router.push({ path: "/dashboard" });
-          })
+        fetch(`${API_URL}/posts/${this.post.id}`, {
+          method: "post",
+          body: formData
+        })
+          .then(() => this.$router.push({ path: "/posts" }))
           .catch(err => console.log(err));
       }
     },
