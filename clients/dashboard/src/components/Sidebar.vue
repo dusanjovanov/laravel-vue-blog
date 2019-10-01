@@ -1,6 +1,10 @@
 <template>
-  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <ul
+    :class="['navbar-nav' ,'bg-gradient-primary' ,'sidebar' ,'sidebar-dark' ,'accordion', {'toggled': isToggled}]"
+    id="accordionSidebar"
+  >
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <div class="sidebar-brand-icon">L</div>
       <div class="sidebar-brand-text mx-3">Laravel/Vue</div>
     </a>
     <hr class="sidebar-divider my-0" />
@@ -25,7 +29,32 @@
     </li>
     <hr class="sidebar-divider d-none d-md-block" />
     <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      <button
+        @click="isToggled = !isToggled"
+        :class="['rounded-circle', 'border-0', 'collapse-button']"
+      >
+        <font-awesome-icon :icon="isToggled ? 'chevron-left' : 'chevron-right'" />
+      </button>
     </div>
   </ul>
 </template>
+<style lang="scss" scoped>
+.collapse-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  &:focus {
+    outline: none;
+  }
+}
+</style>
+<script>
+export default {
+  data() {
+    return {
+      isToggled: false
+    };
+  }
+};
+</script>
