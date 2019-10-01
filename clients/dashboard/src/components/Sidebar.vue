@@ -17,15 +17,44 @@
     <div class="sidebar-heading">Resources</div>
     <li class="nav-item">
       <a
-        class="nav-link collapsed"
+        :class="['nav-link' ,'collapsed' ,{'d-flex': !isToggled} ,'align-items-center']"
         href="#"
         data-toggle="collapse"
         data-target="#collapseTwo"
         aria-expanded="true"
         aria-controls="collapseTwo"
+        @click="visibleDropdown === 'posts'?  visibleDropdown = '': visibleDropdown = 'posts'"
       >
         <span>Posts</span>
+        <span class="ml-auto" v-if="!isToggled">
+          <font-awesome-icon
+            :icon="visibleDropdown === 'posts' ? 'chevron-down' :  'chevron-right'"
+          />
+        </span>
       </a>
+      <div
+        id="collapsePages"
+        :class="['collapse',{'show': visibleDropdown=== 'posts'}]"
+        aria-labelledby="headingPages"
+        data-parent="#accordionSidebar"
+        style
+      >
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Actions</h6>
+          <a class="collapse-item d-flex align-items-center" href="#">
+            Posts Table
+            <span class="ml-auto">
+              <font-awesome-icon icon="table" />
+            </span>
+          </a>
+          <a class="collapse-item d-flex align-items-center" href="#">
+            Add Post
+            <span class="ml-auto">
+              <font-awesome-icon icon="plus" />
+            </span>
+          </a>
+        </div>
+      </div>
     </li>
     <hr class="sidebar-divider d-none d-md-block" />
     <div class="text-center d-none d-md-inline">
@@ -33,7 +62,7 @@
         @click="isToggled = !isToggled"
         :class="['rounded-circle', 'border-0', 'collapse-button']"
       >
-        <font-awesome-icon :icon="isToggled ? 'chevron-left' : 'chevron-right'" />
+        <font-awesome-icon :icon="isToggled ? 'chevron-right' : 'chevron-left'" />
       </button>
     </div>
   </ul>
@@ -53,7 +82,8 @@
 export default {
   data() {
     return {
-      isToggled: false
+      isToggled: false,
+      visibleDropdown: null
     };
   }
 };
