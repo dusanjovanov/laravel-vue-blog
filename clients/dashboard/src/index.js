@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import router from "./router";
 // import "./index.scss";
+import './theme/sb-admin-2.scss';
 
 // Vue router
 Vue.router = router;
