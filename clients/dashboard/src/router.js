@@ -1,4 +1,13 @@
 import VueRouter from "vue-router";
+import store from "./store";
+
+const authCheck = (to, from, next) => {
+    if (store.state.user === null) {
+        next("/login");
+    } else {
+        next();
+    }
+};
 
 const routes = [
     {
@@ -6,31 +15,37 @@ const routes = [
         component: require("./pages/Login").default
     },
     {
-        path: "/register",
-        component: require("./pages/Register").default
-    },
-    {
         path: "/",
-        component: require("./pages/Dashboard").default
-    },
-    {
-        path: "/posts",
-        component: require("./pages/Posts").default
-    },
-    {
-        path: "/posts/:action(add)",
-        component: require("./pages/EditPost").default
-    },
-    {
-        path: "/posts/:action(edit)/:id",
-        component: require("./pages/EditPost").default
+        component: require("./pages/Layout").default,
+        beforeEnter: authCheck,
+        children: [
+            {
+                path: "",
+                component: require("./pages/Dashboard").default
+            },
+            {
+                path: "posts",
+                component: require("./pages/Posts").default,
+                beforeEnter: authCheck
+            },
+            {
+                path: "posts/:action(add)",
+                component: require("./pages/EditPost").default,
+                beforeEnter: authCheck
+            },
+            {
+                path: "posts/:action(edit)/:id",
+                component: require("./pages/EditPost").default,
+                beforeEnter: authCheck
+            }
+        ]
     }
 ];
 
 const router = new VueRouter({
     mode: "history",
     routes,
-    base: '/dashboard'
+    base: "/dashboard"
 });
 
 export default router;
