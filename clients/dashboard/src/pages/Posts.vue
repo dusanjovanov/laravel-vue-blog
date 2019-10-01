@@ -50,7 +50,7 @@ export default {
         return console.log("no posts selected");
       }
       this.$router.push({
-        path: `/dashboard/posts/edit/${this.selectedPosts[0]}`
+        path: `/posts/edit/${this.selectedPosts[0]}`
       });
     },
     handleDelete() {
