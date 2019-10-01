@@ -6,7 +6,7 @@
         <div id="content">
           <topbar />
           <div class="container-fluid">
-            <div class="row"></div>
+            <router-view />
           </div>
         </div>
         <footer class="sticky-footer bg-white">

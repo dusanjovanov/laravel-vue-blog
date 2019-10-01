@@ -10,15 +10,19 @@ const routes = [
         component: require("./pages/Register").default
     },
     {
-        path: "/dashboard",
+        path: "/",
         component: require("./pages/Dashboard").default
     },
     {
-        path: "/dashboard/posts/:action(add)",
+        path: "/posts",
+        component: require("./pages/Posts").default
+    },
+    {
+        path: "/posts/:action(add)",
         component: require("./pages/EditPost").default
     },
     {
-        path: "/dashboard/posts/:action(edit)/:id",
+        path: "/posts/:action(edit)/:id",
         component: require("./pages/EditPost").default
     }
 ];
