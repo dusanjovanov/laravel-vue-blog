@@ -40,7 +40,7 @@ import {
   Underline,
   History
 } from "tiptap-extensions";
-import { API_URL } from "../config";
+import { API_URL } from "../../../config";
 export default {
   data() {
     return {
